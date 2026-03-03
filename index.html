@@ -1,1 +1,171 @@
-<h1>Test</h1>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إضافة موظف جديد</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:#fff;
+    width:400px;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border:1px solid #ddd;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#1a73e8;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#155ab6;
+}
+
+.message{
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>إضافة موظف جديد</h2>
+
+<form id="employeeForm">
+
+<input type="text" id="EmployeeName" placeholder="اسم الموظف الكامل" required>
+
+<input type="number" id="EmployeeNumber" placeholder="رقم الموظف" required>
+
+<input type="date" id="StartDate" required>
+
+<select id="Outlet" required>
+<option value="">اختر المعرض</option>
+<option value="04-Andalos Mall">04-Andalos Mall</option>
+<option value="05-Haifa Mall">05-Haifa Mall</option>
+<option value="06-Redsea Mall">06-Redsea Mall</option>
+<option value="07-Arab Mall">07-Arab Mall</option>
+<option value="08-Makkah Mall">08-Makkah Mall</option>
+<option value="09-Al-Salam Mall">09-Al-Salam Mall</option>
+<option value="11-Jouri Mall">11-Jouri Mall</option>
+<option value="12-Al_Hamra Mall">12-Al_Hamra Mall</option>
+<option value="13-Al-Yasmin Mall">13-Al-Yasmin Mall</option>
+<option value="14-Al Kamal Mall">14-Al Kamal Mall</option>
+<option value="15-Riyadh Othaim Mall">15-Riyadh Othaim Mall</option>
+<option value="16-Ehsa Othaim Mall">16-Ehsa Othaim Mall</option>
+<option value="17-Arar Othaim Mall">17-Arar Othaim Mall</option>
+<option value="18-Al_Khayyat Center">18-Al_Khayyat Center</option>
+<option value="19-Hail Othaim Mall">19-Hail Othaim Mall</option>
+<option value="20-Sitten Street Makkah">20-Sitten Street Makkah</option>
+<option value="21-Abha Al_Rashid Mall New">21-Abha Al_Rashid Mall New</option>
+<option value="22-Tabuk Park">22-Tabuk Park</option>
+<option value="23-Alia Mall Madinah">23-Alia Mall Madinah</option>
+<option value="24-Yanbu Dana Mall">24-Yanbu Dana Mall</option>
+<option value="25-Rabwa Othaim Mall">25-Rabwa Othaim Mall</option>
+<option value="26-Al-Noor Mall Madinah">26-Al-Noor Mall Madinah</option>
+<option value="27-Dhahran Mall khobar">27-Dhahran Mall khobar</option>
+<option value="28-Al Nakheel Mall Dammam">28-Al Nakheel Mall Dammam</option>
+<option value="29-Al Nakheel Mall Riyadh">29-Al Nakheel Mall Riyadh</option>
+<option value="30-Tala Mall Riyadh">30-Tala Mall Riyadh</option>
+<option value="32-Atyaf Mall Riyadh">32-Atyaf Mall Riyadh</option>
+<option value="36-Al jubail Mall">36-Al jubail Mall</option>
+<option value="38-Al_Riyadh Park">38-Al_Riyadh Park</option>
+<option value="39-Salam Mall Riyadh">39-Salam Mall Riyadh</option>
+<option value="40-Hayat Mall Riyad">40-Hayat Mall Riyad</option>
+<option value="42-Dareen Mall Dammam">42-Dareen Mall Dammam</option>
+<option value="43-Mujan Park">43-Mujan Park</option>
+<option value="44-Al-Jouf Center">44-Al-Jouf Center</option>
+<option value="45- Riyadh Gallery Mall">45- Riyadh Gallery Mall</option>
+<option value="46-Khaleej Mall Riyadh">46-Khaleej Mall Riyadh</option>
+<option value="47-Al-Nakheel Plaza">47-Al-Nakheel Plaza</option>
+<option value="48 - Jeddah Park">48 - Jeddah Park</option>
+<option value="49-Al Ahsa Mall">49-Al Ahsa Mall</option>
+<option value="50-Meem Plaza">50-Meem Plaza</option>
+<option value="51-Riyadh Park Avenue">51-Riyadh Park Avenue</option>
+<option value="52-Al_Baha Mall">52-Al_Baha Mall</option>
+<option value="53-Al Basateen Mall">53-Al Basateen Mall</option>
+<option value="54-THE VILLAGE">54-THE VILLAGE</option>
+<option value="55- Jabl Omar">55- Jabl Omar</option>
+<option value="56-Aziz Mall2">56-Aziz Mall2</option>
+<option value="57-Sauq7">57-Sauq7</option>
+<option value="1906-LAVANDA PARK">1906-LAVANDA PARK</option>
+<option value="1114-Malgha Mall">1114-Malgha Mall</option>
+<option value="1115-Alrabie Mall">1115-Alrabie Mall</option>
+</select>
+
+<button type="submit">إرسال</button>
+
+</form>
+
+<div class="message" id="message"></div>
+
+</div>
+
+<script>
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwa_wjc2qECsl8_EVrK86aRgE-gPpSpwAOnye-zg5xh1wXnZqcRzq2YlIFz4pvk7WIH/exec";
+
+document.getElementById("employeeForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+let formData = new FormData();
+formData.append("EmployeeName", document.getElementById("EmployeeName").value);
+formData.append("EmployeeNumber", document.getElementById("EmployeeNumber").value);
+formData.append("StartDate", document.getElementById("StartDate").value);
+formData.append("Outlet", document.getElementById("Outlet").value);
+
+fetch(SCRIPT_URL,{
+method:"POST",
+body:formData
+})
+.then(res=>res.json())
+.then(data=>{
+if(data.status==="duplicate"){
+document.getElementById("message").innerText="⚠️ الاسم أو الرقم موجود مسبقاً";
+}
+else{
+document.getElementById("message").innerText="✅ تم إرسال الطلب بنجاح";
+document.getElementById("employeeForm").reset();
+}
+})
+.catch(()=>{
+document.getElementById("message").innerText="❌ حدث خطأ";
+});
+});
+
+</script>
+
+</body>
+</html>
