@@ -17,23 +17,31 @@ body{
 
 .container{
     background:#fff;
-    width:400px;
+    width:420px;
     padding:30px;
-    border-radius:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
 }
 
 h2{
     text-align:center;
-    margin-bottom:20px;
+    margin-bottom:25px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+    font-size:14px;
 }
 
 input, select{
     width:100%;
     padding:10px;
-    margin-bottom:15px;
+    margin-bottom:18px;
     border:1px solid #ddd;
-    border-radius:5px;
+    border-radius:6px;
+    font-size:14px;
 }
 
 button{
@@ -42,8 +50,10 @@ button{
     background:#1a73e8;
     color:#fff;
     border:none;
-    border-radius:5px;
+    border-radius:6px;
     cursor:pointer;
+    font-size:15px;
+    font-weight:bold;
 }
 
 button:hover{
@@ -65,12 +75,16 @@ button:hover{
 
 <form id="employeeForm">
 
-<input type="text" id="EmployeeName" placeholder="اسم الموظف الكامل" required>
+<label>اسم الموظف الكامل</label>
+<input type="text" id="EmployeeName" required>
 
-<input type="number" id="EmployeeNumber" placeholder="رقم الموظف" required>
+<label>رقم الموظف</label>
+<input type="number" id="EmployeeNumber" required>
 
+<label>تاريخ بداية الموظف</label>
 <input type="date" id="StartDate" required>
 
+<label>اسم معرض المباشرة</label>
 <select id="Outlet" required>
 <option value="">اختر المعرض</option>
 <option value="04-Andalos Mall">04-Andalos Mall</option>
@@ -107,17 +121,17 @@ button:hover{
 <option value="42-Dareen Mall Dammam">42-Dareen Mall Dammam</option>
 <option value="43-Mujan Park">43-Mujan Park</option>
 <option value="44-Al-Jouf Center">44-Al-Jouf Center</option>
-<option value="45- Riyadh Gallery Mall">45- Riyadh Gallery Mall</option>
+<option value="45-Riyadh Gallery Mall">45-Riyadh Gallery Mall</option>
 <option value="46-Khaleej Mall Riyadh">46-Khaleej Mall Riyadh</option>
 <option value="47-Al-Nakheel Plaza">47-Al-Nakheel Plaza</option>
-<option value="48 - Jeddah Park">48 - Jeddah Park</option>
+<option value="48-Jeddah Park">48-Jeddah Park</option>
 <option value="49-Al Ahsa Mall">49-Al Ahsa Mall</option>
 <option value="50-Meem Plaza">50-Meem Plaza</option>
 <option value="51-Riyadh Park Avenue">51-Riyadh Park Avenue</option>
 <option value="52-Al_Baha Mall">52-Al_Baha Mall</option>
 <option value="53-Al Basateen Mall">53-Al Basateen Mall</option>
 <option value="54-THE VILLAGE">54-THE VILLAGE</option>
-<option value="55- Jabl Omar">55- Jabl Omar</option>
+<option value="55-Jabl Omar">55-Jabl Omar</option>
 <option value="56-Aziz Mall2">56-Aziz Mall2</option>
 <option value="57-Sauq7">57-Sauq7</option>
 <option value="1906-LAVANDA PARK">1906-LAVANDA PARK</option>
