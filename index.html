@@ -71,7 +71,7 @@ button:hover{
 <body>
 
 <div class="container">
-<h2>إضافة موظف جديد</h2>
+<h2>إدارة الموظفين</h2>
 
 <form id="employeeForm">
 
@@ -81,8 +81,16 @@ button:hover{
 <label>رقم الموظف</label>
 <input type="number" id="EmployeeNumber" required>
 
-<label>تاريخ بداية الموظف</label>
-<input type="date" id="StartDate" required>
+<label>المطلوب</label>
+<select id="RequestType" required>
+  <option value="">اختر المطلوب</option>
+  <option value="إضافة موظف جديد">إضافة موظف جديد</option>
+  <option value="حذف موظف">حذف موظف</option>
+  <option value="نقل موظف">نقل موظف</option>
+</select>
+
+<label>تاريخ المباشرة (اختياري)</label>
+<input type="date" id="StartDate">
 
 <label>اسم معرض المباشرة</label>
 <select id="Outlet" required>
@@ -148,37 +156,35 @@ button:hover{
 </div>
 
 <script>
-
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwa_wjc2qECsl8_EVrK86aRgE-gPpSpwAOnye-zg5xh1wXnZqcRzq2YlIFz4pvk7WIH/exec";
 
 document.getElementById("employeeForm").addEventListener("submit", function(e){
-e.preventDefault();
+  e.preventDefault();
 
-let formData = new FormData();
-formData.append("EmployeeName", document.getElementById("EmployeeName").value);
-formData.append("EmployeeNumber", document.getElementById("EmployeeNumber").value);
-formData.append("StartDate", document.getElementById("StartDate").value);
-formData.append("Outlet", document.getElementById("Outlet").value);
+  let formData = new FormData();
+  formData.append("EmployeeName", document.getElementById("EmployeeName").value);
+  formData.append("EmployeeNumber", document.getElementById("EmployeeNumber").value);
+  formData.append("RequestType", document.getElementById("RequestType").value);
+  formData.append("StartDate", document.getElementById("StartDate").value);
+  formData.append("Outlet", document.getElementById("Outlet").value);
 
-fetch(SCRIPT_URL,{
-method:"POST",
-body:formData
-})
-.then(res=>res.json())
-.then(data=>{
-if(data.status==="duplicate"){
-document.getElementById("message").innerText="⚠️ الاسم أو الرقم موجود مسبقاً";
-}
-else{
-document.getElementById("message").innerText="✅ تم إرسال الطلب بنجاح";
-document.getElementById("employeeForm").reset();
-}
-})
-.catch(()=>{
-document.getElementById("message").innerText="❌ حدث خطأ";
+  fetch(SCRIPT_URL,{
+    method:"POST",
+    body:formData
+  })
+  .then(res=>res.json())
+  .then(data=>{
+    if(data.status==="duplicate"){
+      document.getElementById("message").innerText="⚠️ الاسم أو الرقم موجود مسبقاً";
+    } else {
+      document.getElementById("message").innerText="✅ تم إرسال الطلب بنجاح";
+      document.getElementById("employeeForm").reset();
+    }
+  })
+  .catch(()=>{
+    document.getElementById("message").innerText="❌ حدث خطأ";
+  });
 });
-});
-
 </script>
 
 </body>
