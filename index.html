@@ -1,163 +1,135 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>إضافة موظف جديد - Orange Bed & Bath</title>
+
 <script>
 
+// منع فتح الصفحة بدون تسجيل دخول
+
 if(localStorage.getItem("loggedIn") !== "true"){
-
 window.location = "login.html";
-
 }
 
 </script>
 
-
 <style>
+
 body{
-    font-family: Arial, sans-serif;
-    background:#f4f6f9;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+font-family: Arial, sans-serif;
+background:#f4f6f9;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
 }
 
 .container{
-    background:#fff;
-    width:420px;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+background:#fff;
+width:420px;
+padding:30px;
+border-radius:12px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
 }
 
 h2{
-    text-align:center;
-    margin-bottom:25px;
+text-align:center;
+margin-bottom:20px;
 }
 
 label{
-    display:block;
-    margin-bottom:6px;
-    font-weight:bold;
-    font-size:14px;
+display:block;
+margin-top:15px;
+font-weight:bold;
 }
 
-input, select{
-    width:100%;
-    padding:10px;
-    margin-bottom:18px;
-    border:1px solid #ddd;
-    border-radius:6px;
-    font-size:14px;
+input,select{
+width:100%;
+padding:10px;
+margin-top:5px;
+border:1px solid #ccc;
+border-radius:6px;
 }
 
 button{
-    width:100%;
-    padding:12px;
-    background:#1a73e8;
-    color:#fff;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    font-size:15px;
-    font-weight:bold;
+width:100%;
+margin-top:20px;
+padding:12px;
+background:#1f6feb;
+border:none;
+color:white;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
 }
 
 button:hover{
-    background:#155ab6;
+background:#1559c1;
+}
+
+.logout{
+background:#888;
+margin-top:10px;
 }
 
 .message{
-    text-align:center;
-    margin-top:15px;
-    font-weight:bold;
+text-align:center;
+margin-top:15px;
+color:green;
 }
+
+.manager{
+text-align:center;
+margin-bottom:10px;
+font-size:14px;
+color:#444;
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
+
 <h2>إدارة الموظفين</h2>
+
+<div class="manager">
+المدير: <span id="managerName"></span>
+</div>
 
 <form id="employeeForm">
 
 <label>اسم الموظف الكامل</label>
-<input type="text" id="EmployeeName" required>
+<input type="text" id="employeeName" required>
 
 <label>رقم الموظف</label>
-<input type="number" id="EmployeeNumber" required>
+<input type="number" id="employeeNumber" required>
 
 <label>المطلوب</label>
-<select id="RequestType" required>
-  <option value="">اختر المطلوب</option>
-  <option value="إضافة موظف جديد">إضافة موظف جديد</option>
-  <option value="حذف موظف">حذف موظف</option>
-  <option value="نقل موظف">نقل موظف</option>
+<select id="requestType" required>
+<option value="">اختر المطلوب</option>
+<option value="إضافة موظف">إضافة موظف</option>
+<option value="حذف موظف">حذف موظف</option>
 </select>
 
 <label>تاريخ المباشرة</label>
-<input type="date" id="StartDate">
+<input type="date" id="startDate" required>
 
 <label>اسم معرض المباشرة</label>
 <select id="Outlet" required>
 <option value="">اختر المعرض</option>
-<option value="04-Andalos Mall">04-Andalos Mall</option>
-<option value="05-Haifa Mall">05-Haifa Mall</option>
-<option value="06-Redsea Mall">06-Redsea Mall</option>
-<option value="07-Arab Mall">07-Arab Mall</option>
-<option value="08-Makkah Mall">08-Makkah Mall</option>
-<option value="09-Al-Salam Mall">09-Al-Salam Mall</option>
-<option value="11-Jouri Mall">11-Jouri Mall</option>
-<option value="12-Al_Hamra Mall">12-Al_Hamra Mall</option>
-<option value="13-Al-Yasmin Mall">13-Al-Yasmin Mall</option>
-<option value="14-Al Kamal Mall">14-Al Kamal Mall</option>
-<option value="15-Riyadh Othaim Mall">15-Riyadh Othaim Mall</option>
-<option value="16-Ehsa Othaim Mall">16-Ehsa Othaim Mall</option>
-<option value="17-Arar Othaim Mall">17-Arar Othaim Mall</option>
-<option value="18-Al_Khayyat Center">18-Al_Khayyat Center</option>
-<option value="19-Hail Othaim Mall">19-Hail Othaim Mall</option>
-<option value="20-Sitten Street Makkah">20-Sitten Street Makkah</option>
-<option value="21-Abha Al_Rashid Mall New">21-Abha Al_Rashid Mall New</option>
-<option value="22-Tabuk Park">22-Tabuk Park</option>
-<option value="23-Alia Mall Madinah">23-Alia Mall Madinah</option>
-<option value="24-Yanbu Dana Mall">24-Yanbu Dana Mall</option>
-<option value="25-Rabwa Othaim Mall">25-Rabwa Othaim Mall</option>
-<option value="26-Al-Noor Mall Madinah">26-Al-Noor Mall Madinah</option>
-<option value="27-Dhahran Mall khobar">27-Dhahran Mall khobar</option>
-<option value="28-Al Nakheel Mall Dammam">28-Al Nakheel Mall Dammam</option>
-<option value="29-Al Nakheel Mall Riyadh">29-Al Nakheel Mall Riyadh</option>
-<option value="30-Tala Mall Riyadh">30-Tala Mall Riyadh</option>
-<option value="32-Atyaf Mall Riyadh">32-Atyaf Mall Riyadh</option>
-<option value="36-Al jubail Mall">36-Al jubail Mall</option>
-<option value="38-Al_Riyadh Park">38-Al_Riyadh Park</option>
-<option value="39-Salam Mall Riyadh">39-Salam Mall Riyadh</option>
-<option value="40-Hayat Mall Riyad">40-Hayat Mall Riyad</option>
-<option value="42-Dareen Mall Dammam">42-Dareen Mall Dammam</option>
-<option value="43-Mujan Park">43-Mujan Park</option>
-<option value="44-Al-Jouf Center">44-Al-Jouf Center</option>
-<option value="45-Riyadh Gallery Mall">45-Riyadh Gallery Mall</option>
-<option value="46-Khaleej Mall Riyadh">46-Khaleej Mall Riyadh</option>
-<option value="47-Al-Nakheel Plaza">47-Al-Nakheel Plaza</option>
-<option value="48-Jeddah Park">48-Jeddah Park</option>
-<option value="49-Al Ahsa Mall">49-Al Ahsa Mall</option>
-<option value="50-Meem Plaza">50-Meem Plaza</option>
-<option value="51-Riyadh Park Avenue">51-Riyadh Park Avenue</option>
-<option value="52-Al_Baha Mall">52-Al_Baha Mall</option>
-<option value="53-Al Basateen Mall">53-Al Basateen Mall</option>
-<option value="54-THE VILLAGE">54-THE VILLAGE</option>
-<option value="55-Jabl Omar">55-Jabl Omar</option>
-<option value="56-Aziz Mall2">56-Aziz Mall2</option>
-<option value="57-Sauq7">57-Sauq7</option>
-<option value="1906-LAVANDA PARK">1906-LAVANDA PARK</option>
-<option value="1114-Malgha Mall">1114-Malgha Mall</option>
-<option value="1115-Alrabie Mall">1115-Alrabie Mall</option>
 </select>
 
 <button type="submit">إرسال</button>
+
+<button type="button" class="logout" onclick="logout()">تسجيل الخروج</button>
 
 </form>
 
@@ -167,38 +139,82 @@ button:hover{
 
 <script>
 
-    
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbye-4qiKSR9xq9MmZ_piv7AroXWZMoGEwEas-kFOcGZD9qb_EqWJh_j3MwRsyzjWsiuFw/exec";
-console.log("Using URL:", SCRIPT_URL);
-    
-document.getElementById("employeeForm").addEventListener("submit", function(e){
-  e.preventDefault();
+// عرض اسم المدير
 
-  let formData = new FormData();
-  formData.append("EmployeeName", document.getElementById("EmployeeName").value);
-  formData.append("EmployeeNumber", document.getElementById("EmployeeNumber").value);
-  formData.append("RequestType", document.getElementById("RequestType").value);
-  formData.append("StartDate", document.getElementById("StartDate").value);
-  formData.append("Outlet", document.getElementById("Outlet").value);
+document.getElementById("managerName").innerText =
+localStorage.getItem("manager");
 
-  fetch(SCRIPT_URL,{
-    method:"POST",
-    body:formData
-  })
-  .then(res=>res.json())
-  .then(data=>{
-    if(data.status==="duplicate"){
-      document.getElementById("message").innerText="⚠️ الاسم أو الرقم موجود مسبقاً";
-    } else {
-      document.getElementById("message").innerText="✅ تم إرسال الطلب بنجاح";
-      document.getElementById("employeeForm").reset();
-    }
-  })
-  .catch(()=>{
-    document.getElementById("message").innerText="❌ حدث خطأ";
-  });
+
+// تحميل المعارض الخاصة بالمدير
+
+let outlets = JSON.parse(localStorage.getItem("outlets"));
+
+let select = document.getElementById("Outlet");
+
+if(outlets){
+
+outlets.forEach(function(o){
+
+let option = document.createElement("option");
+
+option.value = o;
+option.text = o;
+
+select.appendChild(option);
+
 });
+
+}
+
+
+// ارسال الطلب
+
+document.getElementById("employeeForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let data = {
+
+employeeName: document.getElementById("employeeName").value,
+employeeNumber: document.getElementById("employeeNumber").value,
+requestType: document.getElementById("requestType").value,
+startDate: document.getElementById("startDate").value,
+outlet: document.getElementById("Outlet").value,
+manager: localStorage.getItem("manager")
+
+};
+
+fetch("PUT_YOUR_SCRIPT_URL_HERE",{
+
+method:"POST",
+body: JSON.stringify(data)
+
+})
+.then(res=>res.json())
+.then(response=>{
+
+document.getElementById("message").innerText =
+"تم إرسال الطلب بنجاح";
+
+document.getElementById("employeeForm").reset();
+
+});
+
+});
+
+
+// تسجيل الخروج
+
+function logout(){
+
+localStorage.clear();
+window.location="login.html";
+
+}
+
 </script>
 
 </body>
 </html>
+
+
