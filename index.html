@@ -133,8 +133,12 @@ color:#444;
 
 </select>
 
+<div id="startDateField" style="display:none;">
+
 <label>تاريخ المباشرة</label>
-<input type="date" id="startDate" required>
+<input type="date" id="startDate">
+
+</div>
 
 <label>اسم معرض المباشرة</label>
 <select id="Outlet" required>
@@ -216,7 +220,23 @@ document.getElementById("employeeForm").reset();
 
 });
 
+document.getElementById("requestType").addEventListener("change", function(){
 
+var value = this.value;
+
+var dateField = document.getElementById("startDateField");
+
+if(value === "إضافة موظف جديد"){
+
+dateField.style.display = "block";
+
+}else{
+
+dateField.style.display = "none";
+
+}
+
+});
 // تسجيل الخروج
 
 function logout(){
@@ -227,6 +247,7 @@ window.location="login.html";
 }
 
 </script>
+  
 
 </body>
 </html>
