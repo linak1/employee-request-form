@@ -145,6 +145,15 @@ color:#444;
 <option value="">اختر المعرض</option>
 </select>
 
+<div id="newOutletField" style="display:none;">
+
+<label>المعرض الجديد</label>
+<select id="newOutlet">
+<option value="">اختر المعرض الجديد</option>
+</select>
+
+</div>
+
 <button type="submit">إرسال</button>
 
 <button type="button" class="logout" onclick="logout()">تسجيل الخروج</button>
@@ -168,6 +177,7 @@ localStorage.getItem("manager");
 let outlets = JSON.parse(localStorage.getItem("outlets"));
 
 let select = document.getElementById("Outlet");
+let newSelect = document.getElementById("newOutlet");
 
 if(outlets){
 
@@ -179,6 +189,13 @@ option.value = o;
 option.text = o;
 
 select.appendChild(option);
+
+let option2 = document.createElement("option");
+
+option2.value = o;
+option2.text = o;
+
+newSelect.appendChild(option2);
 
 });
 
@@ -198,6 +215,7 @@ employeeNumber: document.getElementById("employeeNumber").value,
 requestType: document.getElementById("requestType").value,
 startDate: document.getElementById("startDate").value,
 outlet: document.getElementById("Outlet").value,
+newOutlet: document.getElementById("newOutlet").value,
 manager: localStorage.getItem("manager")
 
 };
@@ -225,18 +243,31 @@ document.getElementById("requestType").addEventListener("change", function(){
 var value = this.value;
 
 var dateField = document.getElementById("startDateField");
+var newOutletField = document.getElementById("newOutletField");
 
 if(value === "إضافة موظف جديد"){
 
 dateField.style.display = "block";
+newOutletField.style.display = "none";
 
-}else{
+}
+
+else if(value === "نقل موظف"){
 
 dateField.style.display = "none";
+newOutletField.style.display = "block";
+
+}
+
+else{
+
+dateField.style.display = "none";
+newOutletField.style.display = "none";
 
 }
 
 });
+  
 // تسجيل الخروج
 
 function logout(){
